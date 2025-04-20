@@ -1,6 +1,7 @@
 {
   "files.associations": {
     "*.embeddedhtml": "html",
-    "deque": "cpp"
+    "deque": "cpp",
+    "ostream": "cpp"
   }
 }
