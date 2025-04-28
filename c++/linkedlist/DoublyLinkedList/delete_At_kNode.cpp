@@ -113,6 +113,9 @@ Node *deleteAtKthNode(Node *head, int k)
   {
     prev->next = next;
     next->prev = prev;
+    temp->next = NULL;
+    temp->prev = NULL;
+    delete temp;
     return head;
   }
 }
@@ -131,7 +134,7 @@ int main()
 {
   vector<int> arr = {11, 22, 33, 44, 55, 66};
   Node *head = convertArrToDLL(arr);
-  head = deleteAtKthNode(head, 5);
+  head = deleteAtKthNode(head, 1);
   print_list(head);
   return 0;
 }
