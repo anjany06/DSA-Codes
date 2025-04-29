@@ -80,11 +80,32 @@ Node *reverse_1(Node *head)
   }
   return head;
 }
+// Second Approach O(n) time and O(1) space
+Node *reverse2(Node *head)
+{
+  if (head == NULL || head->next == NULL)
+  {
+    return head;
+  }
+  Node *curr = head;
+  Node *prev = NULL;
+  while (curr != NULL)
+  {
+    prev = curr->prev;
+    curr->prev = curr->next;
+    curr->next = prev;
+    // so next becomes prev and prev becomes next for moving forward we do curr->prev instead of curr->next
+
+    curr = curr->prev;
+  }
+  // prev->next becomes prev->prev
+  return prev->prev;
+}
 int main()
 {
   vector<int> arr = {1, 2, 3, 4};
   Node *head = convertArrToDLL(arr);
-  head = reverse_1(head);
+  head = reverse2(head);
   print_list(head);
   return 0;
 }
