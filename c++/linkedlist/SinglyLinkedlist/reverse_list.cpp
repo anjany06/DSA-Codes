@@ -1,5 +1,6 @@
 
 #include <iostream>
+#include <stack>
 using namespace std;
 
 class Node
@@ -53,7 +54,26 @@ public:
       temp = temp->next;
     }
   }
+  // With Extra space
+  void reverse_list_with_extra_space()
+  {
+    stack<int> s;
+    Node *temp = head;
+    while (temp != NULL)
+    {
+      s.push(temp->data);
+      temp = temp->next;
+    }
+    temp = head;
+    while (temp != NULL)
+    {
+      temp->data = s.top();
+      s.pop();
+      temp = temp->next;
+    }
+  }
 
+  // Without extra space
   void reverse_list()
   {
     Node *prev = NULL;
@@ -80,7 +100,7 @@ int main()
   LL.push_back(5);
 
   LL.print_list();
-  LL.reverse_list();
+  LL.reverse_list_with_extra_space();
   cout << endl;
   LL.print_list();
 
