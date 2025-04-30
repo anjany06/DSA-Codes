@@ -19,6 +19,7 @@ public:
 
 class List
 {
+public:
   Node *head;
   Node *tail;
 
@@ -89,6 +90,20 @@ public:
     }
     head = prev;
   }
+
+  // Recursive
+  Node *reverseLinkedList(Node *head)
+  {
+    if (head == NULL || head->next == NULL)
+    {
+      return head;
+    }
+    Node *newHead = reverseLinkedList(head->next);
+    Node *front = head->next;
+    front->next = head;
+    head->next = NULL;
+    return newHead;
+  }
 };
 int main()
 {
@@ -98,9 +113,9 @@ int main()
   LL.push_back(3);
   LL.push_back(4);
   LL.push_back(5);
-
   LL.print_list();
-  LL.reverse_list_with_extra_space();
+  LL.head = LL.reverseLinkedList(LL.head); // Recursive
+
   cout << endl;
   LL.print_list();
 
