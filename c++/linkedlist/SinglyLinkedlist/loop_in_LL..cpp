@@ -3,7 +3,6 @@
 
 using namespace std;
 
-
 class Node
 {
 public:
@@ -18,7 +17,6 @@ public:
   }
 };
 
-
 class LinkedList
 {
 private:
@@ -31,7 +29,6 @@ public:
     head = nullptr;
   }
 
- 
   void addNode(int value)
   {
     Node *newNode = new Node(value);
@@ -70,6 +67,30 @@ public:
 
       // Move to the next node
       temp = temp->next;
+    }
+
+    // If the loop is not detected, return false
+    return false;
+  }
+  // Function to detect a loop in the linked list using hare and tortoise method
+  bool detectLoop2()
+  {
+    Node *tortoise = head;
+    Node *hare = head;
+
+    while (hare != nullptr && hare->next != nullptr)
+    {
+      // Move the tortoise one step at a time
+      tortoise = tortoise->next;
+
+      // Move the hare two steps at a time
+      hare = hare->next->next;
+
+      // If the tortoise and hare meet, a loop exists
+      if (tortoise == hare)
+      {
+        return true;
+      }
     }
 
     // If the loop is not detected, return false
@@ -115,7 +136,7 @@ int main()
   list.createLoop(1);
 
   // Detect a loop in the linked list
-  if (list.detectLoop())
+  if (list.detectLoop2())
   {
     cout << "Loop detected in the linked list." << endl;
   }
