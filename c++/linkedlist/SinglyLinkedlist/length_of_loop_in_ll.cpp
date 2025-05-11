@@ -124,7 +124,7 @@ public:
 
     int count = 0;
     while (temp != nullptr)
-    {
+    {uj
       if (count == position)
       {
         loopNode = temp;
